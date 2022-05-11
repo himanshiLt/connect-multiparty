@@ -1,10 +1,5 @@
 language: node_js
 node_js:
-  - "0.10"
-  - "4.9"
-  - "6.17"
-  - "8.16"
-  - "10.16"
   - "12.11"
 sudo: false
 cache:
@@ -65,11 +60,4 @@ script:
     # Run linting
     if npm -ps ls eslint | grep -q eslint; then
       npm run-script lint
-    fi
-after_script:
-  - |
-    # Upload coverage to coveralls, if exists
-    if [[ -d .nyc_output ]]; then
-      npm install --save-dev coveralls@2
-      nyc report --reporter=text-lcov | coveralls
     fi
